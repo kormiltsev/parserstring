@@ -31,17 +31,18 @@ func (r *Req) AddRequestToken(name, start, end string) {
 func (r *Req) ParseString(originalstring string) {
 	s := originalstring
 	founded := true
+	aft := ""
 	i := 0
 	for {
 		an := make(map[string]string, 0)
 		for _, t := range r.Tokens {
-			_, s, founded = strings.Cut(s, t.Startstring)
+			_, aft, founded = strings.Cut(s, t.Startstring)
 			if !founded {
 				an[t.Name] = "N/A"
 				continue
 			}
-			an[t.Name], _, _ = strings.Cut(s, t.Endstring)
-
+			an[t.Name], _, _ = strings.Cut(aft, t.Endstring)
+			s = aft
 		}
 		r.Result = append(r.Result, an)
 		i++
