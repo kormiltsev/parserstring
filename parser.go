@@ -39,7 +39,6 @@ func (r *Req) ParseString(originalstring string) {
 		for _, t := range r.Tokens {
 			_, aft, founded = strings.Cut(s, t.Startstring)
 			if !founded {
-				an[t.Name] = "N/A"
 				done = true
 				continue
 			}
