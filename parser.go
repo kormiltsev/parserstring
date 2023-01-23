@@ -32,6 +32,7 @@ func (r *Req) ParseString(originalstring string) {
 	s := originalstring
 	founded := true
 	aft := ""
+	done := false
 	i := 0
 	for {
 		an := make(map[string]string, 0)
@@ -39,12 +40,16 @@ func (r *Req) ParseString(originalstring string) {
 			_, aft, founded = strings.Cut(s, t.Startstring)
 			if !founded {
 				an[t.Name] = "N/A"
+				done = true
 				continue
 			}
 			an[t.Name], _, _ = strings.Cut(aft, t.Endstring)
 			s = aft
 		}
 		r.Result = append(r.Result, an)
+		if done {
+			return
+		}
 		i++
 	}
 }
