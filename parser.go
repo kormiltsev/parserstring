@@ -45,10 +45,10 @@ func (r *Req) ParseString(originalstring string) {
 			an[t.Name], _, _ = strings.Cut(aft, t.Endstring)
 			s = aft
 		}
-		r.Result = append(r.Result, an)
 		if done {
 			return
 		}
+		r.Result = append(r.Result, an)
 		i++
 	}
 }
