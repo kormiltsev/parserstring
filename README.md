@@ -14,9 +14,9 @@ func myOtherFunc() {
 ...
 }"
 
-  request := parserstring.NewReq()
-  request.AddRequestToken("function name", "func ", "(")
-  request.ParseString(page)
+	request := parserstring.NewReq()
+	request.AddRequestToken("function name", "func ", "(")
+	request.ParseString(page)
 ```
 Returns `[map[function name:myFunctionName] map[function name:myOtherFunc]]`
 
@@ -25,9 +25,9 @@ Returns `[map[function name:myFunctionName] map[function name:myOtherFunc]]`
 page := "<thead><tr><th>Pollutant</th></tr></thead><tbody><tr><td>Unhealthy for Sensitive Groups</td><td> 114 <span class=\"sett\">AQI level</span><app-trend..."
 
 	request := parserstring.NewReq()
-  request.AddRequestToken("Status", "<tbody><tr><td>", "</td>")
-  request.AddRequestToken("Index", "</td><td> ", " <span")
-  request.ParseString(page)
+	request.AddRequestToken("Status", "<tbody><tr><td>", "</td>")
+	request.AddRequestToken("Index", "</td><td> ", " <span")
+	request.ParseString(page)
 ```
 Returns `[map[Status:Unhealthy for Sensitive Groups Index:114]]`
 
