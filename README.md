@@ -17,6 +17,8 @@ func myOtherFunc() {
 	request := parserstring.NewReq()
 	request.AddRequestToken("function name", "func ", "(")
 	request.ParseString(page)
+	
+return request.Result
 ```
 Returns `[map[function name:myFunctionName] map[function name:myOtherFunc]]`
 
@@ -28,6 +30,8 @@ page := "<thead><tr><th>Pollutant</th></tr></thead><tbody><tr><td>Unhealthy for 
 	request.AddRequestToken("Status", "<tbody><tr><td>", "</td>")
 	request.AddRequestToken("Index", "</td><td> ", " <span")
 	request.ParseString(page)
+	
+return request.Result
 ```
 Returns `[map[Status:Unhealthy for Sensitive Groups Index:114]]`
 
@@ -36,5 +40,5 @@ Returns `[map[Status:Unhealthy for Sensitive Groups Index:114]]`
 - skips token if not found
 - tokens order is important
 - search for 1<sup>st</sup> token starts from begining, but next tokens searching starts from place where previous token was found
-- searching repeats till end of string given
+- searching repeats till end of the original string
 
